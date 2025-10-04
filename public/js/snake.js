@@ -4,9 +4,26 @@ const scoreEl = document.getElementById("score");
 const speedEl = document.getElementById("speed");
 const restartBtn = document.getElementById("restart");
 
-const COLS = 20;
-const ROWS = 20;
-const CELL = canvas.width / COLS;
+let COLS = 40; // Default
+let ROWS = 40;
+let CELL;
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  // Recalculate cell size 
+  CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
+
+  ROWS = Math.floor(canvas.height / CELL);
+}
+
+window.addEventListener("resize", () => {
+  resizeCanvas();
+  draw(); // redraw after resize
+});
+
+resizeCanvas();
 
 let snake;
 let dir;

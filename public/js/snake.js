@@ -137,6 +137,11 @@ function draw() {
     const color = i === 0 ? "#10b981" : "#10b98150";
     drawRect(seg.x, seg.y, size, size, color);
   });
+
+  // Draw walls
+  ctx.strokeStyle = "#000000"; // border color
+  ctx.lineWidth = 2;            // thickness of the walls
+  ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
 }
 
 // Draw a rectangle

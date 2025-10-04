@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/thakura1/cs4241-final-project-group11#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "@tailwindcss/cli": "^4.1.14",
+    "express": "^5.1.0",
+    "tailwindcss": "^4.1.14"
   }
 }

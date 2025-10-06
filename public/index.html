@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snake</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <main class="container" >
+      <h1>Snake</h1>
+      <div class="board">
+        <canvas id="gameCanvas" class="w-full h-full bg-gray-800"></canvas>
+        <div class="GUI">
+          <div>Score: <span id="score">0</span></div>
+          <div>Speed: <span id="speed">8</span></div>
+          <button id="restart">Restart</button>
+        </div>
+      </div>
+      <p class="instructions">
+        Use arrow keys or WASD to move. Eat food to grow. Don't hit walls or
+        yourself!
+      </p>
+    </main>
+    <script src="/js/snake.js"></script>
+  </body>
+</html>

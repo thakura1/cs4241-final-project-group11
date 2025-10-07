@@ -9,9 +9,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/level_builder', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'level_builder.html'));
+})
 
 app.listen(PORT, () => {
 console.log(`Server running on http://localhost:${PORT}`);

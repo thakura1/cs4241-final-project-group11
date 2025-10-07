@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Level Builder | Snake</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+  </head>
+  <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <main class="container" >
+      <h1>Level Builder</h1>
+      <div class="board">
+        <label>Title</label>
+        <input type="text" id="titleInput" />
+        <canvas id="buildCanvas" class="w-full h-full bg-gray-80"></canvas>
+        <div class="GUI">
+          <button id="clearGrid">Clear Grid</button>
+          <input type="file" id="importInput" accept=".json"/>
+          <button id="importButton">Import</button>
+          <button id="exportButton">Export</button>
+        </div>
+      </div>
+      <p class="instructions">
+        Use the arrow keys or WASD to move the cursor on the canvas.
+        Press Enter to remove/add a wall.
+      </p>
+    </main>
+    <script src="/js/level_builder.js"></script>
+  </body>
+</html>

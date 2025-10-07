@@ -3,21 +3,21 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Snake</title>
+    <title class="p-10">Snake</title>
     <link href="/css/styles.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
-    <main class="container" >
+    <main class="flex flex-col items-center w-full max-w-5xl h-full p-4 box-border" >
       <h1>Snake</h1>
-      <div class="board">
-        <canvas id="gameCanvas" class="w-full h-full bg-gray-800"></canvas>
-        <div class="GUI">
+      <div class="flex flex-1 w-full items-start justify-center gap-6">
+        <canvas id="gameCanvas" class="flex-1 bg-gray-800 rounded-lg"></canvas>
+        <div class="GUI h-100 p-10 justify-start gap-2 text-lg">
           <div>Score: <span id="score">0</span></div>
           <div>Speed: <span id="speed">8</span></div>
-          <button id="restart">Restart</button>
+          <button id="restart" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg mt-2">Restart</button>
         </div>
       </div>
-      <p class="instructions">
+      <p class="instructions mt-6 text-center text-gray-400">
         Use arrow keys or WASD to move. Eat food to grow. Don't hit walls or
         yourself!
       </p>

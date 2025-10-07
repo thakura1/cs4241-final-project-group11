@@ -5,14 +5,31 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const session = require("express-session");
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { auth } = require('express-openid-connect');
 require("dotenv").config();
 
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: process.env.AUTH_SECRET,
+  baseURL: process.env.AUTH_BASEURL,
+  clientID: process.env.AUTH_CLIENTID,
+  issuerBaseURL: process.env.AUTH_ISSUERBASEURL
+};
+
+app.use(auth(config));
 
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }))
+
+const { requiresAuth } = require('express-openid-connect');
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 
 app.use(express.json());
 

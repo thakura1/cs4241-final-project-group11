@@ -7,15 +7,33 @@ const restartBtn = document.getElementById("restart");
 let COLS = 40; // Default
 let ROWS = 40;
 let CELL;
+let offsetX = 0;
+let offsetY = 0;
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const guiHeight = 100; 
+  const padding = 40;
+
+  canvas.width = window.innerWidth - padding;
+  canvas.height = window.innerHeight - guiHeight - padding;
+
+  // Center canvas
+  canvas.style.display = "block";
+  canvas.style.margin = "0 auto";
 
   // Recalculate cell size 
   CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
-
   ROWS = Math.floor(canvas.height / CELL);
+
+  // Calculate offset to center the grid
+  const gridWidth = COLS * CELL;
+  const gridHeight = ROWS * CELL;
+  offsetX = Math.floor((canvas.width - gridWidth) / 2);
+  offsetY = Math.floor((canvas.height - gridHeight) / 2);
+
+  // No negative offsets
+  offsetX = Math.max(0, offsetX);
+  offsetY = Math.max(0, offsetY);
 }
 
 window.addEventListener("resize", () => {
@@ -128,6 +146,10 @@ function draw() {
     return; // stop drawing snake/food
   }
 
+  // Draw grid contents centered by translating the context
+  ctx.save();
+  ctx.translate(offsetX, offsetY);
+
   // Draw food
   drawRect(food.x, food.y, CELL * 0.9, CELL * 0.9, "#ff4757");
 
@@ -142,6 +164,9 @@ function draw() {
   ctx.strokeStyle = "#000000"; // border color
   ctx.lineWidth = 2;            // thickness of the walls
   ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
+
+  // Restore context
+  ctx.restore();
 }
 
 // Draw a rectangle

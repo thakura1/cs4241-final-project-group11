@@ -85,11 +85,24 @@ document.getElementById("uploadButton").onclick = async() => {
         layout: layout
     }
 
-    const response = await fetch("/level", {
-        method: "POST", 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(levelData)
-    }).then(()=> alert("Uploaded to database!"))
+    try {
+        const response = await fetch("/level", {
+            method: "POST", 
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(levelData)
+        });
+        
+        if (response.ok) {
+            alert("Uploaded to database!");
+        } else if (response.status === 401) {
+            alert("Please log in to upload levels. Click the Login link in the navigation bar.");
+        } else {
+            alert("Failed to upload level. Please try again.");
+        }
+    } catch (error) {
+        console.error("Upload error:", error);
+        alert("Failed to upload level. Please try again.");
+    }
 }
 resizeCanvas();
 reset();

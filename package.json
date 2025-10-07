@@ -20,7 +20,10 @@
   "homepage": "https://github.com/thakura1/cs4241-final-project-group11#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.14",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongodb": "^6.20.0",
     "tailwindcss": "^4.1.14"
   }
 }

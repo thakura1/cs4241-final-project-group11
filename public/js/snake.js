@@ -9,8 +9,15 @@ let ROWS = 40;
 let CELL;
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  const guiHeight = 100; 
+  const padding = 40;
+
+  canvas.width = window.innerWidth - padding;
+  canvas.height = window.innerHeight - guiHeight -padding;
+
+  // Center canvas
+  canvas.style.display = "block";
+  canvas.style.margin = "0 auto";
 
   // Recalculate cell size 
   CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);

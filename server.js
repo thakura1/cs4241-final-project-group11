@@ -66,6 +66,12 @@ app.post("/level", async (req, res) => {
     res.end( )
 })
 
+app.get("/levels", async (req, res) => {
+    const levels = await levelCollection.find({}).toArray();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end( JSON.stringify(levels));
+})
+
 
 run().catch(console.dir);
 

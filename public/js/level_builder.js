@@ -79,47 +79,17 @@ document.getElementById("clearGrid").onclick = () => {
     for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
 }
 
-document.getElementById("exportButton").onclick = () => {
+document.getElementById("uploadButton").onclick = async() => {
     const levelData = {
         title: document.getElementById("titleInput").value,
         layout: layout
     }
 
-    const objectStr = JSON.stringify(levelData);
-    const blob = new Blob([objectStr], { type: "application/json" });
-
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "level.json";
-
-    a.click();
-
-    // Clean up
-    URL.revokeObjectURL(url);
+    const response = await fetch("/level", {
+        method: "POST", 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(levelData)
+    }).then(()=> alert("Uploaded to database!"))
 }
-
-document.getElementById("importButton").onclick = () => {
-    const fileInput = document.getElementById("importInput");
-    const file = fileInput.files[0];
-    if (!file) {
-        alert("Please choose a JSON file first!");
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-        try {
-            const importedData = JSON.parse(event.target.result)
-            document.getElementById("titleInput").value = importedData.title;
-            layout = importedData.layout;
-        } catch (error) {
-            console.error(error);
-        }
-    }
-    reader.readAsText(file);
-
-}
-
 resizeCanvas();
 reset();

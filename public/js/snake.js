@@ -99,6 +99,10 @@ function update() {
     return gameOver();
   }
 
+  if (layout[head.y][head.x] != 0){
+    return gameOver();
+  }
+
   // Self collision
   if (snake.some((seg) => seg.x === head.x && seg.y === head.y)) {
     return gameOver();

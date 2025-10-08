@@ -87,7 +87,13 @@ window.addEventListener("keydown", (event) => {
     if ((key === "ArrowRight" || key === "d") && currX < COLS - 1)
         currX++;
     if ((key === "Enter")){
-        layout[currY][currX] = layout[currY][currX] === 1 ? 0 : 1;
+        if (currY < ROWS/2 + 4 && currY > ROWS/2 - 4 && currX < COLS/2 + 4 && currX > COLS/2 - 4) {
+            alert("You can't place walls that close to the starting area");
+        }
+        else {
+            layout[currY][currX] = layout[currY][currX] === 1 ? 0 : 1;
+        }
+        
     }
     if ((key === "p")){
         console.log(layout);

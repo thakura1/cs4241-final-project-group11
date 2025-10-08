@@ -109,7 +109,6 @@ document.getElementById("uploadButton").onclick = async() => {
         title: document.getElementById("titleInput").value,
         layout: layout
     }
-
     const response = await fetch("/level", {
         method: "POST", 
         headers: { 'Content-Type': 'application/json' },

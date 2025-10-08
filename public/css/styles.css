@@ -143,5 +143,8 @@ nav-header {
   background-color: var(--poseidon-light-green);
 }
 
+#builder-title {
+  text-align: center;
+}
 
 /* ============== END ============== */

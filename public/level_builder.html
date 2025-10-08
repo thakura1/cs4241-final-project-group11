@@ -11,18 +11,21 @@
   </head>
   <body class="bg-main flex flex-col min-h-screen">
     <header class="nav-header">
-        <nav class="nav-links">
-            <a href="/">Game</a>
-            <a href="/level_builder" class="active">Builder</a>
-            <a href="/community">Community</a>
-            <a href="/login">Login</a>
-        </nav>
-     </header>
+      <nav class="nav-links">
+          <a href="/">Game</a>
+          <a href="/level_builder" class="active">Builder</a>
+          <a href="/community">Community</a>
+          <a href="/logout" id="logout">Logout</a>
+          <a href="/login" id = "login">Login</a>
+      </nav>
+   </header>
     <main class="container" >
       <h1>Level Builder</h1>
       <div class="board">
-        <label>Title</label>
-        <input type="text" id="titleInput" />
+        <div id="builder-title">
+            <label class="block">Title</label>
+            <input type="text" id="titleInput" class="mx-auto block" />
+        </div>
         <canvas id="buildCanvas" class="w-full h-full bg-gray-80"></canvas>
         <div class="GUI">
           <button id="clearGrid">Clear Grid</button>
@@ -35,5 +38,6 @@
       </p>
     </main>
     <script src="/js/level_builder.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

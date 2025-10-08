@@ -27,6 +27,22 @@ app.use(session({
 
 const { requiresAuth } = require('express-openid-connect');
 
+// Lightweight auth status endpoint for client-side UI toggling
+app.get("/api/auth-status", (request, response) => {
+  const isAuthenticated = !!(request.oidc && request.oidc.isAuthenticated())
+  if (!isAuthenticated) {
+    return response.json({ authenticated: false })
+  }
+  response.json({
+    authenticated: true,
+    user: {
+      sub: request.oidc.user?.sub,
+      name: request.oidc.user?.name,
+      email: request.oidc.user?.email
+    }
+  })
+})
+
 app.get('/profile', requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });

@@ -8,13 +8,14 @@
   </head>
   <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
     <header class="nav-header">
-        <nav class="nav-links">
-            <a href="/" class="active">Game</a>
-            <a href="/level_builder">Builder</a>
-            <a href="/community">Community</a>
-            <a href="/login">Login</a>
-        </nav>
-     </header>
+      <nav class="nav-links">
+          <a href="/">Game</a>
+          <a href="/level_builder">Builder</a>
+          <a href="/community" class="active">Community</a>
+          <a href="/logout" id="logout">Logout</a>
+          <a href="/login" id = "login">Login</a>
+      </nav>
+   </header>
     <main class="flex flex-col items-center w-full max-w-5xl h-full p-4 box-border" >
       <h1>Snake</h1>
       <div class="flex flex-1 w-full items-start justify-center gap-6">
@@ -31,5 +32,6 @@
       </p>
     </main>
     <script src="/js/snake.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

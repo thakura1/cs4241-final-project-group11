@@ -11,7 +11,7 @@ let offsetX = 0;
 let offsetY = 0;
 
 let layout = []
-for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
+
 
 function resizeCanvas() {
   const guiHeight = 100; 
@@ -221,6 +221,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 window.onload = async () => {
+  for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
   const params = new URLSearchParams(window.location.search);
   if(params.get("id")){
     const level = await fetch(`/levels/${params.get("id")}`, {

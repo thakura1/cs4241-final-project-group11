@@ -78,7 +78,10 @@ function placeFood() {
       x: Math.floor(Math.random() * COLS),
       y: Math.floor(Math.random() * ROWS),
     };
-    valid = !snake.some((s) => s.x === food.x && s.y === food.y && layout[food.y][food.x] === 0);
+    valid = !snake.some((s) => s.x === food.x && s.y === food.y);
+    if (valid) {
+      valid = layout[food.y][food.x] === 0;
+    }
   }
 }
 
@@ -226,7 +229,6 @@ window.onload = async () => {
     const levelJSON = JSON.parse(levelText)
 
     layout = levelJSON.layout;
-    console.log(layout);
   }
   // Start game
   reset();

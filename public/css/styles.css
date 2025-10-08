@@ -90,5 +90,8 @@ nav-header {
   transition: background-color 0.2s;
 }
 
+#builder-title {
+  text-align: center;
+}
 
 /* ============== END ============== */

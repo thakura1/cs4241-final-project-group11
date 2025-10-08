@@ -25,13 +25,30 @@ function drawEmptyRect(gridX, gridY, w, h, color){
 }
 
 function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  const guiHeight = 100; 
+  const padding = 40;
 
-    // Recalculate cell size 
-    CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
+  canvas.width = window.innerWidth - padding;
+  canvas.height = window.innerHeight - guiHeight - padding;
 
-    ROWS = Math.floor(canvas.height / CELL);
+  // Center canvas
+  canvas.style.display = "block";
+  canvas.style.margin = "0 auto";
+
+  // Recalculate cell size 
+  CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
+  ROWS = Math.floor(canvas.height / CELL);
+
+  // Calculate offset to center the grid
+  const gridWidth = COLS * CELL;
+  const gridHeight = ROWS * CELL;
+  offsetX = Math.floor((canvas.width - gridWidth) / 2);
+  offsetY = Math.floor((canvas.height - gridHeight) / 2);
+
+  // No negative offsets
+  offsetX = Math.max(0, offsetX);
+  offsetY = Math.max(0, offsetY);
+
 }
 
 function reset() {
@@ -50,6 +67,9 @@ function loop() {
         }
     }
     drawEmptyRect(currX, currY, CELL*0.95, CELL*0.95, "#000000");
+    ctx.strokeStyle = "#000000"; // border color
+    ctx.lineWidth = 2;            // thickness of the walls
+    ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
 }
 
 window.addEventListener("resize", () => {
@@ -67,7 +87,13 @@ window.addEventListener("keydown", (event) => {
     if ((key === "ArrowRight" || key === "d") && currX < COLS - 1)
         currX++;
     if ((key === "Enter")){
-        layout[currY][currX] = layout[currY][currX] === 1 ? 0 : 1;
+        if (currY < ROWS/2 + 4 && currY > ROWS/2 - 4 && currX < COLS/2 + 4 && currX > COLS/2 - 4) {
+            alert("You can't place walls that close to the starting area");
+        }
+        else {
+            layout[currY][currX] = layout[currY][currX] === 1 ? 0 : 1;
+        }
+        
     }
     if ((key === "p")){
         console.log(layout);

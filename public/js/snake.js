@@ -10,6 +10,9 @@ let CELL;
 let offsetX = 0;
 let offsetY = 0;
 
+let layout = []
+for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
+
 function resizeCanvas() {
   const guiHeight = 100; 
   const padding = 40;
@@ -75,7 +78,7 @@ function placeFood() {
       x: Math.floor(Math.random() * COLS),
       y: Math.floor(Math.random() * ROWS),
     };
-    valid = !snake.some((s) => s.x === food.x && s.y === food.y);
+    valid = !snake.some((s) => s.x === food.x && s.y === food.y && layout[food.y][food.x] === 0);
   }
 }
 
@@ -93,6 +96,10 @@ function update() {
 
   // Wall collision
   if (head.x < 0 || head.x >= COLS || head.y < 0 || head.y >= ROWS) {
+    return gameOver();
+  }
+
+  if (layout[head.y][head.x] != 0){
     return gameOver();
   }
 
@@ -153,6 +160,14 @@ function draw() {
   // Draw food
   drawRect(food.x, food.y, CELL * 0.9, CELL * 0.9, "#ff4757");
 
+  for (let i = 0; i < ROWS; i++){
+    for (let j = 0; j < COLS; j++){
+      if (layout[i][j] === 1){
+        drawRect(j, i, CELL, CELL, "#cccccc")
+      }
+    }
+  }
+
   // Draw snake
   snake.forEach((seg, i) => {
     const size = i === 0 ? CELL * 0.95 : CELL * 0.85;
@@ -201,5 +216,21 @@ restartBtn.addEventListener("click", () => {
   reset();
 });
 
-// Start game
-reset();
+window.onload = async () => {
+  const params = new URLSearchParams(window.location.search);
+  if(params.get("id")){
+    const level = await fetch(`/levels/${params.get("id")}`, {
+      method: "GET"
+    })
+    const levelText = await level.text();
+    const levelJSON = JSON.parse(levelText)
+
+    layout = levelJSON.layout;
+    console.log(layout);
+  }
+  // Start game
+  reset();
+}
+
+
+

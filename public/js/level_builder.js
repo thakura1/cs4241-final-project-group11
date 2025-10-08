@@ -93,7 +93,6 @@ window.addEventListener("keydown", (event) => {
         else {
             layout[currY][currX] = layout[currY][currX] === 1 ? 0 : 1;
         }
-        
     }
     if ((key === "p")){
         console.log(layout);
@@ -119,3 +118,4 @@ document.getElementById("uploadButton").onclick = async() => {
 }
 resizeCanvas();
 reset();
+ctx.translate(offsetX, offsetY);

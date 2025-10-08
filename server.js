@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const session = require("express-session");
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const { auth } = require('express-openid-connect');
 require("dotenv").config();
 
@@ -89,6 +89,11 @@ app.get("/levels", async (req, res) => {
     res.end( JSON.stringify(levels));
 })
 
+app.get("/levels/:id", async (req, res) => {
+    const level = await levelCollection.find({_id: new ObjectId(req.params.id)}).toArray();
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end( JSON.stringify(level[0]));
+})
 
 run().catch(console.dir);
 

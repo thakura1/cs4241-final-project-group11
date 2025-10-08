@@ -5,6 +5,12 @@
 
 @layer theme {
   :root{
+
+    --font-heading: "Quantico", sans-serif;
+    --font-body: "Roboto", sans-serif;
+
+
+    /* color palette */
     --poseidon-navy: #012030;
     --poseidon-blue: #13678A;
     --poseidon-teal: #45C4B0;
@@ -12,6 +18,49 @@
     --poseidon-light-green: #DAFDBA;
   }
 }
+
+.quantico-regular {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.quantico-bold {
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.quantico-regular-italic {
+  font-family: "Quantico", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.quantico-bold-italic {
+  font-family: "Quantico", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.roboto-regular {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
+body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .page-title, .logo, nav a {
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
 /* base colors */
 body.bg-main {
   background-color: var(--poseidon-navy);
@@ -88,6 +137,10 @@ nav-header {
   border-radius: 0.4rem;
   cursor: pointer;
   transition: background-color 0.2s;
+}
+
+.level-card:button:hover {
+  background-color: var(--poseidon-light-green);
 }
 
 #builder-title {

@@ -11,7 +11,7 @@ let offsetX = 0;
 let offsetY = 0;
 
 let layout = []
-for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
+
 
 function resizeCanvas() {
   const guiHeight = 100; 
@@ -158,18 +158,10 @@ function draw() {
 
   // Draw grid contents centered by translating the context
   ctx.save();
-  ctx.translate(offsetX, offsetY);
+
 
   // Draw food
   drawRect(food.x, food.y, CELL * 0.9, CELL * 0.9, "#ff4757");
-
-  for (let i = 0; i < ROWS; i++){
-    for (let j = 0; j < COLS; j++){
-      if (layout[i][j] === 1){
-        drawRect(j, i, CELL, CELL, "#cccccc")
-      }
-    }
-  }
 
   // Draw snake
   snake.forEach((seg, i) => {
@@ -182,6 +174,15 @@ function draw() {
   ctx.strokeStyle = "#000000"; // border color
   ctx.lineWidth = 2;            // thickness of the walls
   ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
+
+
+  for (let i = 0; i < ROWS; i++){
+    for (let j = 0; j < COLS; j++){
+      if (layout[i][j] === 1){
+        drawRect(j, i, CELL, CELL, "#cccccc")
+      }
+    }
+  }
 
   // Restore context
   ctx.restore();
@@ -220,6 +221,7 @@ restartBtn.addEventListener("click", () => {
 });
 
 window.onload = async () => {
+  for (let i = 0; i < ROWS; i++) layout.push(Array(COLS).fill(0));
   const params = new URLSearchParams(window.location.search);
   if(params.get("id")){
     const level = await fetch(`/levels/${params.get("id")}`, {
@@ -232,6 +234,7 @@ window.onload = async () => {
   }
   // Start game
   reset();
+  
 }
 
 

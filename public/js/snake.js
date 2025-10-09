@@ -212,6 +212,36 @@ function gameOver() {
   isRunning = false;
   clearInterval(gameInterval);
   soundManager.playGameOverSound();
+  submitScore();
+}
+
+// Submit score to server
+async function submitScore() {
+  const params = new URLSearchParams(window.location.search);
+  const levelId = params.get("id");
+  
+  if (!levelId || score === 0) return; // Only submit if playing a community level and score > 0
+  
+  try {
+    const response = await fetch('/scores', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        levelId: levelId,
+        score: score
+      })
+    });
+    
+    if (response.ok) {
+      console.log('Score submitted successfully!');
+    } else {
+      console.log('Failed to submit score - user may not be logged in');
+    }
+  } catch (error) {
+    console.error('Error submitting score:', error);
+  }
 }
 
 // Keyboard input: arrow keys + WASD

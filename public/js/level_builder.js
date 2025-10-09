@@ -61,8 +61,8 @@ function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     drawEmptyRect(currX, currY, CELL*0.95, CELL*0.95, "#000000");
-    ctx.strokeStyle = "#000000"; // border color
-    ctx.lineWidth = 2;            // thickness of the walls
+    ctx.strokeStyle = "#9AEBA3"; // border color
+    ctx.lineWidth = 5;            // thickness of the walls
     ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
 
     for (let i = 0; i < ROWS; i++){

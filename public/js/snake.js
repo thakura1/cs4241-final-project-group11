@@ -117,6 +117,7 @@ function update() {
   if (head.x === food.x && head.y === food.y) {
     score++;
     scoreEl.textContent = score;
+    soundManager.playEatSound();
     placeFood();
 
     // Increase speed every 5 points
@@ -200,6 +201,7 @@ function drawRect(gridX, gridY, w, h, color) {
 function gameOver() {
   isRunning = false;
   clearInterval(gameInterval);
+  soundManager.playGameOverSound();
 }
 
 // Keyboard input: arrow keys + WASD
@@ -207,17 +209,29 @@ window.addEventListener("keydown", (e) => {
   if (!isRunning) return;
 
   const key = e.key;
-  if ((key === "ArrowUp" || key === "w") && dir.y !== 1) dir = { x: 0, y: -1 };
-  if ((key === "ArrowDown" || key === "s") && dir.y !== -1)
-    dir = { x: 0, y: 1 };
-  if ((key === "ArrowLeft" || key === "a") && dir.x !== 1)
+  if ((key === "ArrowUp" || key === "w") && dir.y !== 1) {
+    dir = { x: 0, y: -1 };
+    soundManager.playMove();
+  }
+  if ((key === "ArrowDown" || key === "s") && dir.y !== -1){
+    dir = { x: 0, y: 1 }
+    soundManager.playMove();
+  }
+  if ((key === "ArrowLeft" || key === "a") && dir.x !== 1) {
     dir = { x: -1, y: 0 };
+    soundManager.playMove();
+  }
   if ((key === "ArrowRight" || key === "d") && dir.x !== -1)
+  {
     dir = { x: 1, y: 0 };
+    soundManager.playMove();
+  }
+  if (soundManager.ctx.state === 'suspended') { soundManager.ctx.resume(); }
 });
 
 // Restart button
 restartBtn.addEventListener("click", () => {
+  if (soundManager.ctx.state === 'suspended') { soundManager.ctx.resume(); }
   reset();
 });
 

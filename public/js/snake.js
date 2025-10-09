@@ -225,6 +225,7 @@ async function submitScore() {
   try {
     const response = await fetch('/scores', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -237,10 +238,11 @@ async function submitScore() {
     if (response.ok) {
       console.log('Score submitted successfully!');
     } else {
-      console.log('Failed to submit score - user may not be logged in');
+      const errorData = await response.json().catch(() => ({}));
+      console.error('Failed to submit score:', response.status, errorData);
     }
   } catch (error) {
-    console.error('Error submitting score:', error);
+    console.error('Network error submitting score:', error);
   }
 }
 

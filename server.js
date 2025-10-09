@@ -172,7 +172,6 @@ function setupRoutes() {
                 .sort({ score: -1 })
                 .limit(3)
                 .toArray();
-            
             res.writeHead(200, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(topScores));
         } catch (error) {

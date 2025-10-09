@@ -9,7 +9,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link href="/css/styles.css" rel="stylesheet" />
   </head>
+
   <body class="bg-main flex flex-col min-h-screen">
+    <!-- nav bar -->
     <header class="nav-header">
       <nav class="nav-links">
           <a href="/">Game</a>
@@ -19,23 +21,31 @@
           <a href="/login" id = "login">Login</a>
       </nav>
    </header>
-    <main class="container" >
+
+    <!-- Main -->
+    <main class="flex flex-col items-center justify-center w-full mx-auto p-6 flex-1">
       <h1>Level Builder</h1>
-      <div class="board">
-        <div id="builder-title">
+      
+      <div class="flex flex-col items-center justify-center w-full gap-6 mt-6">
+        <div id="builder-title" class="mb-4">
             <label class="block">Title</label>
-            <input type="text" id="titleInput" class="mx-auto block" />
+            <input type="text" id="titleInput" class="mx-auto block border border-gray-400 bg-white text-black" />
         </div>
+
+
         <canvas id="buildCanvas" class="w-full h-full bg-gray-80"></canvas>
-        <div class="GUI">
+
+        <div class="GUI flex flex-col items-center gap-3 mt-6">
           <button id="clearGrid">Clear Grid</button>
           <button id="uploadButton">Upload</button>
         </div>
       </div>
-      <p class="instructions">
+
+      <p class="instructions mt-8 text-gray-400 text-center">
         Use the arrow keys or WASD to move the cursor on the canvas.
         Press Enter to remove/add a wall.
       </p>
+
     </main>
     <script src="js/level_builder.js"></script>
     <script src="js/main.js"></script>

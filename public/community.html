@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quantico:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">    <link href="/css/styles.css" rel="stylesheet" />
   </head>
-  <body class="bg-main text-white min-h-screen flex flex-col">
-    <!-- Header -->
+
+  <body class="bg-main flex flex-col min-h-screen">
+    <!-- nav bar -->
      <header class="nav-header">
         <nav class="nav-links">
             <a href="/">Game</a>
@@ -19,13 +20,16 @@
             <a href="/login" id = "login">Login</a>
         </nav>
      </header>
+
      <!-- Main -->
-    <main class="container" >
+    <main class="flex flex-col items-center justify-center w-full mx-auto p-6 flex-1">
         <h1>Community Levels</h1>
-        <p class="instructions">
+
+        <p class="instructions mb-6 text-gray-400 text-center">
             Explore and play levels created by the community! Create your own maps and challenge others.
         </p>
-        <div class="community-levels" id="community-levels">
+
+        <div id="community-levels" class="grid grid-cols-1 gap-6 w-full">
         </div>
     </main>
     <script src="js/community.js"></script>

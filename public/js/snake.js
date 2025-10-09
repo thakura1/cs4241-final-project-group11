@@ -17,16 +17,26 @@ function resizeCanvas() {
   const guiHeight = 260; 
   const padding = 10;
 
-  canvas.width = window.innerWidth - padding;
-  canvas.height = window.innerHeight - guiHeight - padding;
+  // get avail space below gui
+  const availableHeight = window.innerHeight - guiHeight - padding;
+  const availableWidth = window.innerWidth - padding;
+
+  // choose smaller dimension to make it  square
+  const size = Math.min(availableWidth, availableHeight);
+
+  // update canvas size to be equal
+  canvas.width = size;
+  canvas.height = size;
 
   // Center canvas
   canvas.style.display = "block";
   canvas.style.margin = "0 auto";
 
   // Recalculate cell size 
-  CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
-  ROWS = Math.floor(canvas.height / CELL);
+  // CELL = Math.floor(Math.min(canvas.width, canvas.height) / COLS);
+  CELL = Math.floor(size / COLS);
+  // ROWS = Math.floor(canvas.height / CELL);
+  ROWS = COLS;
 
   // Calculate offset to center the grid
   const gridWidth = COLS * CELL;

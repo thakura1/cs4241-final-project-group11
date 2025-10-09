@@ -36,7 +36,6 @@ window.onload = async () => {
                 const rank = `${index + 1}.`;
                 leaderboardHTML += `
                     <li class="score-item">
-                        <span class="rank">${rank}</span>
                         <span class="player-name">${score.userName}</span>
                         <span class="score-value">${score.score}</span>
                     </li>

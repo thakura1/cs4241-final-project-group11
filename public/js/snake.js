@@ -183,8 +183,8 @@ function draw() {
   });
 
   // Draw walls
-  ctx.strokeStyle = "#000000"; // border color
-  ctx.lineWidth = 2;            // thickness of the walls
+  ctx.strokeStyle = "#9AEBA3"; // border color
+  ctx.lineWidth = 5;            // thickness of the walls
   ctx.strokeRect(0, 0, COLS * CELL, ROWS * CELL);
 
 

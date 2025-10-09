@@ -158,6 +158,7 @@ function draw() {
 
   // Draw grid contents centered by translating the context
   ctx.save();
+  ctx.translate(offsetX, offsetY); // ADDED BACK - Aditri
 
 
   // Draw food

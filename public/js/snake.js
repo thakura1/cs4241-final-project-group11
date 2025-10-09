@@ -14,8 +14,8 @@ let layout = []
 
 
 function resizeCanvas() {
-  const guiHeight = 100; 
-  const padding = 40;
+  const guiHeight = 260; 
+  const padding = 10;
 
   canvas.width = window.innerWidth - padding;
   canvas.height = window.innerHeight - guiHeight - padding;

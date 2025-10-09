@@ -60,6 +60,7 @@ const client = new MongoClient(uri, {
 }); 
 
 let levelCollection = null
+let scoresCollection = null
 
 async function run() {
   try {
@@ -68,10 +69,15 @@ async function run() {
 
     // Get collection
     levelCollection = client.db("snakeDatabase").collection("levels");
+    scoresCollection = client.db("snakeDatabase").collection("scores");
 
     // Test connection
     await client.db("snakeDatabase").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
+
+    // Some routes depend on the database connection
+    setupRoutes();
+    
   } catch (err) {
     console.error(err);
   }
@@ -91,36 +97,6 @@ app.get('/level_builder', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'level_builder.html'));
 })
 
-
-app.post("/level", requiresAuth(), async (req, res) => {
-    let body = req.body;
-    
-    // Add user information to the level data
-    const levelData = {
-        title: body.title,
-        layout: body.layout,
-        createdBy: req.oidc.user.sub // Auth0 user subid
-    };
-    
-    const pushedLevel = await levelCollection.insertOne(levelData);
-    res.writeHead( 200, { 'Content-Type': 'application/json' })
-    res.end( )
-})
-
-app.get("/levels", async (req, res) => {
-    const levels = await levelCollection.find({}).toArray();
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end( JSON.stringify(levels));
-})
-
-app.get("/levels/:id", async (req, res) => {
-    const level = await levelCollection.find({_id: new ObjectId(req.params.id)}).toArray();
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end( JSON.stringify(level[0]));
-})
-
-run().catch(console.dir);
-
 app.get('/community', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'community.html'));
 })
@@ -132,6 +108,82 @@ app.get('/login', (req, res) => {
 app.get('/logout', (req, res) => {
     res.oidc.logout();
 })
+
+// Got an error for some routes because the database was not connected before
+// the routes were set up. I moved the routes to a function to be called after 
+// the database is connected.
+function setupRoutes() {
+    app.post("/level", requiresAuth(), async (req, res) => {
+        let body = req.body;
+        
+        // Add user information to the level data
+        const levelData = {
+            title: body.title,
+            layout: body.layout,
+            createdBy: req.oidc.user.sub // Auth0 user subid
+        };
+        
+        const pushedLevel = await levelCollection.insertOne(levelData);
+        res.writeHead( 200, { 'Content-Type': 'application/json' })
+        res.end( )
+    })
+
+    app.get("/levels", async (req, res) => {
+        const levels = await levelCollection.find({}).toArray();
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end( JSON.stringify(levels));
+    })
+
+    app.get("/levels/:id", async (req, res) => {
+        const level = await levelCollection.find({_id: new ObjectId(req.params.id)}).toArray();
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end( JSON.stringify(level[0]));
+    })
+
+    // Submit a score for a level
+    app.post("/scores", requiresAuth(), async (req, res) => {
+        const { levelId, score } = req.body;
+        
+        const scoreData = {
+            levelId: levelId,
+            userId: req.oidc.user.sub,
+            userName: req.oidc.user.name || req.oidc.user.email,
+            score: score,
+            timestamp: new Date()
+        };
+        
+        try {
+            await scoresCollection.insertOne(scoreData);
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true }));
+        } catch (error) {
+            console.error("Error submitting score:", error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, error: "Failed to submit score" }));
+        }
+    })
+
+    // Get top scores for a specific level
+    app.get("/scores/:levelId", async (req, res) => {
+        try {
+            const levelId = new ObjectId(req.params.levelId);
+            const topScores = await scoresCollection
+                .find({ levelId: levelId })
+                .sort({ score: -1 })
+                .limit(3)
+                .toArray();
+            
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify(topScores));
+        } catch (error) {
+            console.error("Error fetching scores:", error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: "Failed to fetch scores" }));
+        }
+    })
+}
+
+run().catch(console.dir);
 
 // start
 app.listen(PORT, () => {

@@ -172,6 +172,63 @@ nav-header {
   background-color: var(--poseidon-light-green);
 }
 
+/* Leaderboard styling */
+.leaderboard {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--poseidon-teal);
+}
+
+.leaderboard h4 {
+  color: var(--poseidon-aqua);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.score-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  font-size: 0.85rem;
+}
+
+.rank {
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  color: var(--poseidon-aqua);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.player-name {
+  flex: 1;
+  color: var(--poseidon-light-green);
+  margin-right: 0.5rem;
+}
+
+.score-value {
+  color: var(--poseidon-seafoam);
+  font-weight: 600;
+  font-family: var(--font-heading);
+}
+
+.no-scores {
+  color: var(--poseidon-teal);
+  font-size: 0.8rem;
+  font-style: italic;
+  text-align: center;
+  margin: 0;
+}
+
 #builder-title {
   text-align: center;
 }

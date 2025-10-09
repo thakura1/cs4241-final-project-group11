@@ -1,5 +1,9 @@
-@import "tailwindcss";
-@import "tailwindcss/theme" layer(theme);
+/* @import "tailwindcss";
+@import "tailwindcss/theme" layer(theme); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer theme {
   :root{
@@ -45,131 +49,137 @@
 }
 
 /* navigation bar */
-nav-header {
-  background-color: var(--poseidon-dark-teal);
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 3px solid var(--poseidon-teal);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);;
-}
+@layer components {
+    /* navigation bar */
+    .nav-header {
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);;
+    }
 
-.nav-links a {
-  color: var(--poseidon-light-green);
-  text-decoration: none;
-  margin: 0 1rem;
-  font-weight: 500;
-  transition: color 0.2s, transform 0.25s;
-}
-.nav-links a:hover {
-  color: var(--poseidon-teal);
-  transform: translateY(-2px);
-}
+    .nav-links a {
+        color: var(--poseidon-light-green);
+        text-decoration: none;
+        margin: 0 1rem;
+        font-weight: 500;
+        transition: color 0.2s, transform 0.25s;
+    }
 
-.nav-links a.active {
-  color: var(--poseidon-aqua);;
-  font-weight: 700;
-  border-bottom: 2px solid var(--poseidon-teal);
-  padding-bottom: 0.2rem;
-}
+    .nav-links a:hover {
+        color: var(--poseidon-teal);
+        transform: translateY(-2px);
+    }
 
-/* content of page */
-.page-title {
-  color: var(--poseidon-seafoam);
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
+    .nav-links a.active {
+        color: var(--poseidon-aqua);;
+        font-weight: 700;
+        border-bottom: 2px solid var(--poseidon-teal);
+        padding-bottom: 0.2rem;
+    }
 
-.levels-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
-}
+    /* content of page */
+    .page-title {
+        color: var(--poseidon-seafoam);
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
 
-.level-card {
-  background-color: var(--poseidon-blue);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.2s, transform 0.2s;
-}
-.level-card:hover {
-  background-color: var(--poseidon-teal);
-  transform: translateY(-5px);
-}
+    .levels-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+        gap: 1.5rem;
+        margin: 0 auto;
+        padding: 1rem;
+    }
 
-.level-card h3 {
-  color: var(--poseidon-light-green);
-  margin-bottom: 0.5rem;
-}
+    .level-card {
+        font-family: var(--font-body);
+        background-color: var(--poseidon-blue);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.2s, transform 0.2s;
+    }
+    .level-card:hover {
+        background-color: var(--poseidon-teal);
+        transform: translateY(-5px);
+    }
 
-.level-card p {
-  color: var(--poseidon-light-green);
-  font-size: 0.9rem;
-}
+    .level-card h3 {
+        color: var(--poseidon-light-green);
+        margin-bottom: 0.5rem;
+    }
 
-.level-card:button {
-  background-color: var(--poseidon-seafoam);
-  color: var(--poseidon-navy);
-  margin-top: 0.75rem;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+    .level-card p {
+        color: var(--poseidon-light-green);
+        font-size: 0.9rem;
+    }
 
-.level-card:button:hover {
-  background-color: var(--poseidon-light-green);
-}
+    .level-card button {
+        background-color: var(--poseidon-seafoam);
+        color: var(--poseidon-navy);
+        margin-top: 0.75rem;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-family: var(--font-heading);
+        box-shadow: 0 4px 0 var(--poseidon-light-green);
+    }
 
-#builder-title {
-  text-align: center;
-}
+    .level-card button:hover {
+        background-color: var(--poseidon-light-green);
+    }
 
-button {
-  font-family: var(--font-heading);
-  font-weight: 1rem;
-  background-color: var(--poseidon-teal);
-  color: var(--poseidon-navy);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
+    #builder-title {
+        text-align: center;
+    }
 
-button:hover {
-  background-color: var(--poseidon-seafoam);
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
+    button {
+        font-family: var(--font-heading);
+        background-color: var(--poseidon-teal);
+        color: var(--poseidon-navy);
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    button:hover {
+        background-color: var(--poseidon-seafoam);
+        transform: translateY(-2px);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
 
 
-/* trying smth */
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
+    /* trying smth */
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 
-.community-levels, .board {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .community-levels, .board {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.GUI {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
-}
+    .GUI {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
 
-.bg-main {
-    background-color: var(--poseidon-navy);
+    .bg-main {
+        background-color: var(--poseidon-navy);
+    }
 }
 /* ============== END ============== */

@@ -33,12 +33,31 @@ app.get("/api/auth-status", (request, response) => {
   if (!isAuthenticated) {
     return response.json({ authenticated: false })
   }
+  
   response.json({
     authenticated: true,
     user: {
       sub: request.oidc.user?.sub,
       name: request.oidc.user?.name,
-      email: request.oidc.user?.email
+      email: request.oidc.user?.email,
+      nickname: request.oidc.user?.nickname,
+      given_name: request.oidc.user?.given_name,
+      family_name: request.oidc.user?.family_name
+    }
+  })
+})
+
+// Full user data endpoint for authenticated users
+app.get("/api/user-data", requiresAuth(), (request, response) => {
+  response.json({
+    authenticated: true,
+    user: {
+      sub: request.oidc.user?.sub,
+      name: request.oidc.user?.name,
+      email: request.oidc.user?.email,
+      nickname: request.oidc.user?.nickname,
+      given_name: request.oidc.user?.given_name,
+      family_name: request.oidc.user?.family_name
     }
   })
 })
@@ -144,10 +163,16 @@ function setupRoutes() {
     app.post("/scores", requiresAuth(), async (req, res) => {
         const { levelId, score } = req.body;
         
+        // Use server-side Auth0 data directly
+        const finalUsername = req.oidc.user?.nickname || 
+                             req.oidc.user?.name || 
+                             req.oidc.user?.email || 
+                             'Anonymous';
+        
         const scoreData = {
-            levelId: levelId,
+            levelId: new ObjectId(levelId),
             userId: req.oidc.user.sub,
-            userName: req.oidc.user.name || req.oidc.user.email,
+            userName: finalUsername,
             score: score,
             timestamp: new Date()
         };

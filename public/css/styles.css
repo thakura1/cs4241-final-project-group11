@@ -16,6 +16,8 @@
     --poseidon-teal: #45C4B0;
     --poseidon-seafoam: #9AEBA3;
     --poseidon-light-green: #DAFDBA;
+    --poseidon-dark-teal: #0A4C63;
+    --poseidon-aqua: #62D9C7;
   }
 }
 
@@ -69,27 +71,32 @@ body.bg-main {
 
 /* navigation bar */
 nav-header {
-  background-color: var(--poseidon-blue);
+  background-color: var(--poseidon-dark-teal);
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 3px solid var(--poseidon-teal);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);;
 }
 
 .nav-links a {
   color: var(--poseidon-light-green);
   text-decoration: none;
-  margin: 0 0 0.75rem;
-  transition: color 0.2s;
+  margin: 0 1rem;
+  font-weight: 500;
+  transition: color 0.2s, transform 0.25s;
 }
 .nav-links a:hover {
   color: var(--poseidon-teal);
-  text-decoration: underline;
+  transform: translateY(-2px);
 }
 
 .nav-links a.active {
-  color: var(--poseidon-seafoam);
-  font-weight: bold;
+  color: var(--poseidon-aqua);;
+  font-weight: 700;
+  border-bottom: 2px solid var(--poseidon-teal);
+  padding-bottom: 0.2rem;
 }
 
 /* content of page */
@@ -146,5 +153,24 @@ nav-header {
 #builder-title {
   text-align: center;
 }
+
+button {
+  font-family: var(--font-heading);
+  background-color: var(--poseidon-teal);
+  color: var(--poseidon-navy);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: var(--poseidon-seafoam);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
 
 /* ============== END ============== */

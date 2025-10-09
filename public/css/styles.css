@@ -55,12 +55,34 @@
 
 body {
   font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 1rem;
 }
 
 h1, h2, h3, .page-title, .logo, nav a {
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
   font-family: var(--font-heading);
   letter-spacing: 0.5px;
   text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--poseidon-seafoam);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+p, .instructions {
+  max-width: 60ch;
+  margin: 0.5rem auto;
+  font-size: 1rem;
+  color: var(--poseidon-light-green);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 /* base colors */
@@ -156,6 +178,7 @@ nav-header {
 
 button {
   font-family: var(--font-heading);
+  font-weight: 1rem;
   background-color: var(--poseidon-teal);
   color: var(--poseidon-navy);
   border: none;

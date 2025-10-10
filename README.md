@@ -1,67 +1,67 @@
-# Final Project
+# Final Project Team 11
 
-[Example Projects from D24](https://echo360.org/collection/35d9eb4e-1c44-4880-80b5-c7a2f04ba64c/public)
+Team Members: Aditri Thakur, Colin Lemire, Ethan Shanbaum, Hrithika Ravishankar
 
-[Example Projects from A23](https://echo360.org/collection/50a4d343-caea-4deb-93ee-61bdd7da543f/public)
-
-**Example Projects from Earlier Terms:**
-- [https://pushbox.glitch.me/app](https://pushbox.glitch.me/app)
-- [https://github.com/Cather-Zhang/final_project](https://github.com/Cather-Zhang/final_project)
-- [https://clip.kmoene.com/](https://clip.kmoene.com/)
-- [https://github.com/GP2P/G3P-Expense-Tracker](https://github.com/GP2P/G3P-Expense-Tracker)
-
-For your final project, you'll implement a web application that exhibits understanding of the course materials. This project should provide an opportunity to both be creative and to pursue individual research and learning goals.
-
-## General description
-Your project should consist of a complete Web application, exhibiting facets of the three main sections of the course material:
-
-- Static web page content and design. You should have a project that is accessible, easily navigable, and features significant content.
-- Dynamic behavior implemented with JavaScript (TypeScript is also allowed if your group wants to explore it).
-- Server-side programming *using Node.js*. Typically this will take the form of some sort of persistent data (database), authentication, and possibly server-side computation. 
-- A video (less than five minutes) where each group member explains some aspect of the project. An easy way to produce this video is for you all the groups members to join a Zoom call that is recorded; each member can share their screen when they discuss the project or one member can "drive" the interface while other members narrate (this second option will probably work better.) Upload the video to Canvas. (Further instructions are available in the Canvas assignment.) Make sure your video is less than five minutes but long enough to successfully explain your project and show it in action. There is no minimum video length.
-
-## Project ideation
-Excellent projects typically serve someone/some group; for this assignment you need to define your users and stakeholders. I encourage you to identify projects that will have some impact, whether artistically, politically, productivity, or something else altogether. 
-
-## Deliverables
-
-### Form Team (Due Tuesday, September 23, 11:59 pm)
-Students are will work in teams of 3-5 students for the project. Working in teams should help enable you to build a good project in a limited amount of time.  Use the `#finalproject` channel in Slack to pitch ideas for final projects and/or find fellow team members as needed.
-
-Teams must be in place by end of day on Tuesday, September 23. If you have not identified a team at this point, you will be assigned a team. **Put all team members together in one of the empty "Final Project" groups on Canvas. You MUST do this step to receive full credit on the assignment.**
-
-### Proposal (Due Tuesday, September 30, 11:59 pm) 
-Provide an outline of your project direction and the names of associated team members. The outline should have enough detail so that staff can determine if it meets the minimum expectations or if it goes too far to be reasonable by the deadline. Please include a general description of the project and a list of key technologies/libraries you plan on using (e.g. React, Three.js, Svelte, TypeScript, etc.). Two to four paragraps should provide enough level of detail. Name the file proposal.md and submit a pull request by Tuesday, September 30th at 11:59 PM (end of day). Your pull request does not need to have a specific name. Only one pull request is required per team.
-
-There are no other scheduled checkpoints for your project. 
-
-### Turning in Your Project (Due Friday, October 10, 11:59 pm)
-**Although the assignment is due at 11:59 pm, you must be prepared to demo your website in class that day.**
-
-Submit a second PR on the final project repo to turn in your app and code. Again, only one pull request per team.
-
-Deploy your app, in the form of a webpage, to Render/Heroku/Digital Ocean or whatever hosting service you choose; it is critical that the application functions correctly wherever you post it.
-
-The README for your second pull request doesn’t need to be a formal report, but it should contain the following:
-
-1. A brief description of what you created, and a link to the project itself (two paragraphs of text)
-2. Any additional instructions that might be needed to fully use your project (login information, etc.)
-3. An outline of the technologies you used and how you used them.
-4. What challenges you faced in completing the project.
-5. What each group member was responsible for designing / developing.
-6. What accessibility features you included in your project.
-
-Think of 1, 3, and 4 in particular in a similar vein to the design / technical achievements for A1—A4. Make a case for why what you did was challenging and why your implementation deserves a grade of 100%.
-
-The video described above is also due on Canvas at this time.
-
-## FAQs
-
-**Can I use XYZ framework?** 
-
-You can use any web-based frameworks or tools available, but for your server programming you need to use Node.js. Your client-side scripting language should be either JavaScript or TypeScript. Note that the staff may not be able to assist with TypeScript questions.
+Link: https://cs4241-final-project-group11-production.up.railway.app/
 
 
-******
+Description:
 
-checking to see if hrithika can push to our project --> test
+We craeted a website where users can play snake. The main game follows using arrow keys or WASD to move a tiny snake within a bounded box. Apples will appear in random sections of the area. The snake must eat these apples to grow. However, the snake can not hit any bounds of the area, any walls, or itself. The more fruits a player's snake eats (and thus the longer they survive), the more points a user gains and the harder the game gets (faster snake). The game also features fun colors and sound effects from Tailwind and Web Audio API.  
+Additionally, there is a community aspect to our snake game. Users can login through their github accounts or an email to participate in the community! They can then create and upload their own game maps for others to play. Additionally they can try to get a highscore and get their username up on a map's leaderboard. 
+
+
+Instructions: 
+
+To play the game, use arrow keys or WASD to move the snake around the bounded box. Eat Aplles. Avoid bounds and walls. To replay, hit restart. 
+
+To login, naviagte to the login page, you can either create an account with an email and password or use github to login. Once logged in, you can upload maps and attach your username to any community maps you highscore on. To logout, slect log out.
+
+To build maps, log in. Then give your map a name and use the arrow keys or WASD to move around the boundary area. To place walls, hit eneter. To remove blocks, place the cursor over an exisiting wall and hit eneter. To clear the grid to start over, click clear grid. To upload your map, click upload. 
+
+To play community games, naviagte to the community page and select play on the map you wish to try. If you get a highscore, you can view your username (or anonymous if not logged in) on the map. 
+
+
+Technologies: 
+
+- MongoDB: Stores user data (e.g., login info, high scores, and custom maps) in a NoSQL database
+- Auth0: Secures user authentication through email or github and controls access to restricted features like uploading maps
+- Javascript: Used for client-side and server-side programs
+- Canvas API: Renders the game graphics and animations in the browser
+- Web Audio API: Manages sound effect
+- Tailwind: Provides styling for web application
+- Express.js: Handles backend routing and API endpoints for game data, authentication, and map management
+- Node.js: Provides the runtime environment that runs the backend logic and connects everything
+- Railway: Used to host and deploy web application
+
+
+Challenges:
+- We had issues with accessing logging in through Github on Render, so we switched to Railway.
+- We experienced challenges with resizing the canvas for all different screens, so we allowed scrollability.
+- We also had minor hiccups with testing with different browsers, but were able to move past that. Chrome works, but typically other browsers like edge and firefox consistenly worked during development. 
+
+
+Work Allocation:
+
+- Aditri: Main Game, Deployment
+- Colin: AuthO, Community Functionality, Highscores
+- Ethan: Level Builder, MongoDB Set up, Community Functionality
+- Hrithika: Pages, Tailwind Styling, Sound Effects
+
+
+Accessibility:
+
+On Lighthouse, our project recieved an 100 for accessibility. We stuck to high contrast and clear visuals using tailwind. Additionally we chose very reable fonts. For playing the game, we chose keyboard navigation, a common and accessible game mechanism for user ease. Additionally we provided two options (arrows or WASD) for user prefrence. We also ensured that the canvas resizes dynamically and added scrollability so the game remains playable and visually consistent across different devices with different screen sizes.
+
+
+Technical Achievments:
+
+Tech Achievement 1: We implemented OAuth authentication with Auth0, allowing users to log in using either GitHub or email. Auth0 integration required managing authentication tokens, handling user sessions, and connecting the login system with MongoDB to store user-specific data like custom maps and high scores.
+
+Tech Achievement 2: We built our game upon Canvas API in JavaScript. This enabled us to have real-time snake movements, collision detection, fruit spawning, and difficulty scaling. Additionally, the canvas dynamically resizes for different devices and screen sizes to maintain gameplay.
+
+Tech Achievement 3: We designed and implemented a map builder feature that lets logged-in users design, create, and upload their own maps to the database as JSON layouts. This involved integrating with MongoDB for storage. Our system then can render these maps on the game page.
+
+Tech Achievement 4: We designed and implemented a dynamic leaderboard system that records and displays high scores for each map. Each score is stored in MongoDB and linked to the authenticated user’s account. This required validating users via Auth0 and updating the leaderboard in real time on the front end.
+
+

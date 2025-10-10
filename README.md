@@ -7,7 +7,7 @@ Link: https://cs4241-final-project-group11-production.up.railway.app/
 
 Description:
 
-We craeted a website where users can play snake. The main game follows using arrow keys or WASD to move a tiny snake within a bounded box. Apples will appear in random sections of the area. The snake must eat these apples to grow. However, the snake can not hit any bounds of the area, any walls, or itself. The more fruits a player's snake eats (and thus the longer they survive), the more points a user gains and the harder the game gets (faster snake). The game also features fun colors and sound effects from Tailwind and Web Audio API.  
+We created a website where users can play snake. The main game follows using arrow keys or WASD to move a tiny snake within a bounded box. Apples will appear in random sections of the area. The snake must eat these apples to grow. However, the snake can not hit any bounds of the area, any walls, or itself. The more fruits a player's snake eats (and thus the longer they survive), the more points a user gains and the harder the game gets (faster snake). The game also features fun colors and sound effects from Tailwind and Web Audio API.  
 Additionally, there is a community aspect to our snake game. Users can login through their github accounts or an email to participate in the community! They can then create and upload their own game maps for others to play. Additionally they can try to get a highscore and get their username up on a map's leaderboard. 
 
 
@@ -51,7 +51,7 @@ Work Allocation:
 
 Accessibility:
 
-On Lighthouse, our project recieved an 100 for accessibility. We stuck to high contrast and clear visuals using tailwind. Additionally we chose very reable fonts. For playing the game, we chose keyboard navigation, a common and accessible game mechanism for user ease. Additionally we provided two options (arrows or WASD) for user prefrence. We also ensured that the canvas resizes dynamically and added scrollability so the game remains playable and visually consistent across different devices with different screen sizes.
+On Lighthouse, our project recieved an 100 for accessibility. We stuck to high contrast and clear visuals using tailwind. Additionally we chose very readable fonts. For playing the game, we chose keyboard navigation, a common and accessible game mechanism for user ease. Additionally we provided two options (arrows or WASD) for user prefrence. We also ensured that the canvas resizes dynamically and added scrollability so the game remains playable and visually consistent across different devices with different screen sizes.
 
 
 Technical Achievments:
@@ -62,6 +62,6 @@ Tech Achievement 2: We built our game upon Canvas API in JavaScript. This enable
 
 Tech Achievement 3: We designed and implemented a map builder feature that lets logged-in users design, create, and upload their own maps to the database as JSON layouts. This involved integrating with MongoDB for storage. Our system then can render these maps on the game page.
 
-Tech Achievement 4: We designed and implemented a dynamic leaderboard system that records and displays high scores for each map. Each score is stored in MongoDB and linked to the authenticated user’s account. This required validating users via Auth0 and updating the leaderboard in real time on the front end.
+Tech Achievement 4: We designed and implemented a dynamic leaderboard system that records and displays high scores for each custom map. Each score is stored in MongoDB and linked to the authenticated user’s account. This required validating users via Auth0 and updating the leaderboard in real time on the front end.
 
 

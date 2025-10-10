@@ -13,13 +13,13 @@ Additionally, there is a community aspect to our snake game. Users can login thr
 
 Instructions: 
 
-To play the game, use arrow keys or WASD to move the snake around the bounded box. Eat Aplles. Avoid bounds and walls. To replay, hit restart. 
+To play the game, use arrow keys or WASD to move the snake around the bounded box. Eat apples. Avoid bounds and walls. To replay, hit restart. 
 
-To login, naviagte to the login page, you can either create an account with an email and password or use github to login. Once logged in, you can upload maps and attach your username to any community maps you highscore on. To logout, slect log out.
+To login, naviagte to the login page, you can either create an account with an email and password or use github to login. Once logged in, you can upload maps and attach your username to any community maps you highscore on. To logout, select log out.
 
-To build maps, log in. Then give your map a name and use the arrow keys or WASD to move around the boundary area. To place walls, hit eneter. To remove blocks, place the cursor over an exisiting wall and hit eneter. To clear the grid to start over, click clear grid. To upload your map, click upload. 
+To build maps, log in. Then give your map a name and use the arrow keys or WASD to move around the boundary area. To place walls, hit enter. To remove blocks, place the cursor over an existing wall and hit enter. To clear the grid to start over, click clear grid. To upload your map, click upload. 
 
-To play community games, naviagte to the community page and select play on the map you wish to try. If you get a highscore, you can view your username (or anonymous if not logged in) on the map. 
+To play community games, navigate to the community page and select play on the map you wish to try. If you get a highscore, you can view your username (or anonymous if not logged in) on the map. 
 
 
 Technologies: 
